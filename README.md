@@ -1,4 +1,4 @@
-# _Online Multimedia - Winter Semester 2024/2025_
+# _Advanced Web Technologies - Winter Semester 2025/2026_
 
 In this repository you can find materials for the Advanced Web Technologies lecture and tutorials at LMU Munich in the Winter Semester 2025/2026.
 
