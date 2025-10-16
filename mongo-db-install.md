@@ -1,0 +1,1 @@
+https://www.mongodb.com/docs/manual/administration/install-community/?operating-system=linux&linux-distribution=ubuntu&linux-package=default&macos-installation-method=None&windows-installation-method=None&search-linux=with-search-linux&search-docker=None
