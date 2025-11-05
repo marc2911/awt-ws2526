@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 });
 router.post('/', function(req, res, next) {
     products.push(req.body);
-    res.status(201).json(req.body);
+    res.status(201).json({message:"create product", products:products});
 });
 
 module.exports = router;
