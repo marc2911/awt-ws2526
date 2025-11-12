@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+/** @type {import("monk").IMonkManager} */
 const db = require("monk")("localhost/awt-04");
 
 var indexRouter = require("./routes/index");
@@ -20,14 +21,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// app.use(function (req, res, next) {
-//     req.db = db;
-//     next();
-// });
+/** s.t. route files have access! */
+app.use(function (req, res, next) {
+    req.db = db;
+    next();
+});
 
 // the login route. Itself requires BasicAuth authentication. When successful, a JWT token is generated
 app.use("/login", async (req, res, next) => {
-    console.log(req.headers.authorization);
     const name = req.headers.name;
 
     const user = await db.get("users").findOne({ name: name });
@@ -48,6 +49,7 @@ app.use("/login", async (req, res, next) => {
 
     return;
 
+    console.log(req.headers.authorization);
     if (req.headers.authorization !== "Basic c3R1ZGVudDpvbW1pc2F3ZXNvbWU=") {
         // student ommisawesome
         res.set("WWW-Authenticate", 'Basic realm="401"');
