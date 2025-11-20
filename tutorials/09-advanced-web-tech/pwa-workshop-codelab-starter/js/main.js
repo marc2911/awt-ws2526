@@ -39,12 +39,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-
-
-
-
-
-
 window.addEventListener('DOMContentLoaded', async () => {
   // Set up the editor
   const { Editor } = await import('./app/editor.js');

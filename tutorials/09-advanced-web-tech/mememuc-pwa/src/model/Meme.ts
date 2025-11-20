@@ -1,6 +1,6 @@
 interface Meme {
-    name: string;
-    link: string;
+  name: string;
+  link: string;
 }
 
 export default Meme;

@@ -1,93 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Breakout 02: GitHub Followers</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="author" content="The OMM team" />
-    </head>
-    <body>
-        <form id="get-form">
-            <input type="text" placeholder="username" name="myuser" />
-            <button type="submit">Load my followees!</button>
-        </form>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Breakout 02: GitHub Followers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="The OMM team" />
+  </head>
+  <body>
+    <form id="get-form">
+      <input type="text" placeholder="username" name="myuser" />
+      <button type="submit">Load my followees!</button>
+    </form>
 
-        <div id="output"></div>
+    <div id="output"></div>
 
-        <!-- TODO 2) add a second form, where one can enter a username to unfollow -->
+    <!-- TODO 2) add a second form, where one can enter a username to unfollow -->
 
-        <form id="unfollow" style="margin-top: 10px">
-            <input type="text" placeholder="toUnfollow" name="toUnfollow" />
-            <button type="submit">Unfollow!</button>
-        </form>
+    <form id="unfollow" style="margin-top: 10px">
+      <input type="text" placeholder="toUnfollow" name="toUnfollow" />
+      <button type="submit">Unfollow!</button>
+    </form>
 
-        <div id="output2"></div>
+    <div id="output2"></div>
 
-        <script>
-            function getJSON(method, url, callback, params) {
-                // TODO 2) maybe some authorization is necessary?
-                fetch(url, {
-                    method: method, // *GET, POST, PUT, DELETE, etc.
-                    cache: "no-cache", // otherwise we might not see changes immediately
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: "Bearer <token>", // token
-                    },
-                    body: params, // body data type must match "Content-Type" header
-                }).then((res) => {
-                    if (res.status === 204) return;
+    <script>
+      function getJSON(method, url, callback, params) {
+        // TODO 2) maybe some authorization is necessary?
+        fetch(url, {
+          method: method, // *GET, POST, PUT, DELETE, etc.
+          cache: "no-cache", // otherwise we might not see changes immediately
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer <token>", // token
+          },
+          body: params, // body data type must match "Content-Type" header
+        }).then((res) => {
+          if (res.status === 204) return;
 
-                    res.json().then((json) => {
-                        callback(json);
-                    });
-                });
-            }
+          res.json().then((json) => {
+            callback(json);
+          });
+        });
+      }
 
-            var getForm = document.querySelector("#get-form");
-            var myUserInput = document.querySelector("input[name=myuser]");
-            var output = document.querySelector("#output");
+      var getForm = document.querySelector("#get-form");
+      var myUserInput = document.querySelector("input[name=myuser]");
+      var output = document.querySelector("#output");
 
-            getForm.addEventListener("submit", function (e) {
-                e.preventDefault(); // don't submit at this point.
+      getForm.addEventListener("submit", function (e) {
+        e.preventDefault(); // don't submit at this point.
 
-                // TODO 1) load list followees instead of user profile
-                getJSON(
-                    "GET",
-                    `https://api.github.com/users/${myUserInput.value}/following`,
+        // TODO 1) load list followees instead of user profile
+        getJSON(
+          "GET",
+          `https://api.github.com/users/${myUserInput.value}/following`,
 
-                    function (users) {
-                        // TODO 1) append one p tag for each followee
-                        output.innerHTML += users.map(
-                            (user) => `<p>${user.login}</p>`
-                        );
-                    },
-                    null
-                );
-            });
+          function (users) {
+            // TODO 1) append one p tag for each followee
+            output.innerHTML += users.map((user) => `<p>${user.login}</p>`);
+          },
+          null,
+        );
+      });
 
-            // TODO 2) handle unfollow action
+      // TODO 2) handle unfollow action
 
-            var unfollowForm = document.querySelector("#unfollow");
-            var toUnfollowInput = document.querySelector(
-                "input[name=toUnfollow]"
-            );
-            var output2 = document.querySelector("#output2");
+      var unfollowForm = document.querySelector("#unfollow");
+      var toUnfollowInput = document.querySelector("input[name=toUnfollow]");
+      var output2 = document.querySelector("#output2");
 
-            unfollowForm.addEventListener("submit", function (e) {
-                e.preventDefault(); // don't submit at this point.
+      unfollowForm.addEventListener("submit", function (e) {
+        e.preventDefault(); // don't submit at this point.
 
-                // TODO 1) load list followees instead of user profile
-                getJSON(
-                    "DELETE",
-                    `https://api.github.com/user/following/${toUnfollowInput.value}`,
+        // TODO 1) load list followees instead of user profile
+        getJSON(
+          "DELETE",
+          `https://api.github.com/user/following/${toUnfollowInput.value}`,
 
-                    function (users) {
-                        // TODO 1) append one p tag for each followee
-                        output2.innerHTML += `<p>SUCCESS</p>`;
-                    },
-                    null
-                );
-            });
-        </script>
-    </body>
+          function (users) {
+            // TODO 1) append one p tag for each followee
+            output2.innerHTML += `<p>SUCCESS</p>`;
+          },
+          null,
+        );
+      });
+    </script>
+  </body>
 </html>

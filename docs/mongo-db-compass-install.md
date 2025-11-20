@@ -152,4 +152,3 @@ Alternatively, you can download Compass from the MongoDB [downloads page](https:
 - [Update MongoDB Compass](https://mongodbcom-cdn.staging.corp.mongodb.com/docs/compass/upgrade/#std-label-upgrade-compass)
 
 - [Capabilities of Compass Editions](https://mongodbcom-cdn.staging.corp.mongodb.com/docs/compass/editions/#std-label-compass-feature-table)
-

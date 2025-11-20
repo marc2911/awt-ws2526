@@ -5,20 +5,20 @@ import MyFirstPage from "./pages/MyFirstPage";
 import MySecondPage from "./pages/MySecondPage";
 import SomeThirdPage from "./pages/SomeThirdPage";
 import NoPage from "./pages/NoPage";
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<MyFirstPage />} />
-            <Route path="secondpage" element={<MySecondPage />} />
-            <Route path="thirdpage" element={<SomeThirdPage />} />
-            <Route path="*" element={<NoPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<MyFirstPage />} />
+          <Route path="secondpage" element={<MySecondPage />} />
+          <Route path="thirdpage" element={<SomeThirdPage />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

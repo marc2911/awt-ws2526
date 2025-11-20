@@ -1,11 +1,14 @@
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
+  font:
+    14px "Century Gothic",
+    Futura,
+    sans-serif;
   margin: 20px;
 }
 
 .songtable {
   border-collapse: collapse;
-  text-align:left;
+  text-align: left;
 }
 
 .songtable td:not(.detBtn) {

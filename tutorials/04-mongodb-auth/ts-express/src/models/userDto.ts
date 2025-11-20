@@ -1,5 +1,5 @@
 export interface UserDTO {
-    id: string;
-    username: string;
-    permissions: string[];
+  id: string;
+  username: string;
+  permissions: string[];
 }

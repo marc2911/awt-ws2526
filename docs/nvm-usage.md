@@ -17,6 +17,7 @@ To set an alias:
 ```sh
 nvm alias my_alias v14.4.0
 ```
+
 Make sure that your alias does not contain any spaces or slashes.
 
 The first version installed becomes the default. New shells will start with the default version of node (e.g., `nvm alias default`).
@@ -53,22 +54,22 @@ nvm which 12.22
 
 In place of a version pointer like "14.7" or "16.3" or "12.22.1", you can use the following special default aliases with `nvm install`, `nvm use`, `nvm run`, `nvm exec`, `nvm which`, etc:
 
-  - `node`: this installs the latest version of [`node`](https://nodejs.org/en/)
-  - `iojs`: this installs the latest version of [`io.js`](https://iojs.org/en/)
-  - `stable`: this alias is deprecated, and only truly applies to `node` `v0.12` and earlier. Currently, this is an alias for `node`.
-  - `unstable`: this alias points to `node` `v0.11` - the last "unstable" node release, since post-1.0, all node versions are stable. (in SemVer, versions communicate breakage, not stability).
+- `node`: this installs the latest version of [`node`](https://nodejs.org/en/)
+- `iojs`: this installs the latest version of [`io.js`](https://iojs.org/en/)
+- `stable`: this alias is deprecated, and only truly applies to `node` `v0.12` and earlier. Currently, this is an alias for `node`.
+- `unstable`: this alias points to `node` `v0.11` - the last "unstable" node release, since post-1.0, all node versions are stable. (in SemVer, versions communicate breakage, not stability).
 
 ### Long-term Support
 
 Node has a [schedule](https://github.com/nodejs/Release#release-schedule) for long-term support (LTS) You can reference LTS versions in aliases and `.nvmrc` files with the notation `lts/*` for the latest LTS, and `lts/argon` for LTS releases from the "argon" line, for example. In addition, the following commands support LTS arguments:
 
-  - `nvm install --lts` / `nvm install --lts=argon` / `nvm install 'lts/*'` / `nvm install lts/argon`
-  - `nvm uninstall --lts` / `nvm uninstall --lts=argon` / `nvm uninstall 'lts/*'` / `nvm uninstall lts/argon`
-  - `nvm use --lts` / `nvm use --lts=argon` / `nvm use 'lts/*'` / `nvm use lts/argon`
-  - `nvm exec --lts` / `nvm exec --lts=argon` / `nvm exec 'lts/*'` / `nvm exec lts/argon`
-  - `nvm run --lts` / `nvm run --lts=argon` / `nvm run 'lts/*'` / `nvm run lts/argon`
-  - `nvm ls-remote --lts` / `nvm ls-remote --lts=argon` `nvm ls-remote 'lts/*'` / `nvm ls-remote lts/argon`
-  - `nvm version-remote --lts` / `nvm version-remote --lts=argon` / `nvm version-remote 'lts/*'` / `nvm version-remote lts/argon`
+- `nvm install --lts` / `nvm install --lts=argon` / `nvm install 'lts/*'` / `nvm install lts/argon`
+- `nvm uninstall --lts` / `nvm uninstall --lts=argon` / `nvm uninstall 'lts/*'` / `nvm uninstall lts/argon`
+- `nvm use --lts` / `nvm use --lts=argon` / `nvm use 'lts/*'` / `nvm use lts/argon`
+- `nvm exec --lts` / `nvm exec --lts=argon` / `nvm exec 'lts/*'` / `nvm exec lts/argon`
+- `nvm run --lts` / `nvm run --lts=argon` / `nvm run 'lts/*'` / `nvm run lts/argon`
+- `nvm ls-remote --lts` / `nvm ls-remote --lts=argon` `nvm ls-remote 'lts/*'` / `nvm ls-remote lts/argon`
+- `nvm version-remote --lts` / `nvm version-remote --lts=argon` / `nvm version-remote 'lts/*'` / `nvm version-remote lts/argon`
 
 Any time your local copy of `nvm` connects to https://nodejs.org, it will re-create the appropriate local aliases for all available LTS lines. These aliases (stored under `$NVM_DIR/alias/lts`), are managed by `nvm`, and you should not modify, remove, or create these files - expect your changes to be undone, and expect meddling with these files to cause bugs that will likely not be supported.
 
@@ -104,12 +105,12 @@ nvm install --reinstall-packages-from=default --latest-npm 'lts/*'
 ```
 
 or, you can at any time run the following command to get the latest supported npm version on the current node version:
+
 ```sh
 nvm install-latest-npm
 ```
 
 If you've already gotten an error to the effect of "npm does not support Node.js", you'll need to (1) revert to a previous node version (`nvm ls` & `nvm use <your latest _working_ version from the ls>`), (2) delete the newly created node version (`nvm uninstall <your _broken_ version of node from the ls>`), then (3) rerun your `nvm install` with the `--latest-npm` flag.
-
 
 ### Default Global Packages From File While Installing
 
@@ -165,9 +166,9 @@ nvm ls-remote
 ### Setting Custom Colors
 
 You can set five colors that will be used to display version and alias information. These colors replace the default colors.
-  Initial colors are: g b y r e
+Initial colors are: g b y r e
 
-  Color codes:
+Color codes:
 
     r/R = red / bold red
 
@@ -208,6 +209,7 @@ TERM=dumb nvm ls
 ```
 
 ### Restoring PATH
+
 To restore your PATH, you can deactivate it:
 
 ```sh
@@ -215,6 +217,7 @@ nvm deactivate
 ```
 
 ### Set default node version
+
 To set a default Node version to be used in any new shell, use the alias 'default':
 
 ```sh
@@ -224,6 +227,7 @@ nvm alias default 18.12  # this refers to the latest installed v18.12.x version 
 ```
 
 ### Use a mirror of node binaries
+
 To use a mirror of the node binaries, set `$NVM_NODEJS_ORG_MIRROR`:
 
 ```sh
@@ -245,6 +249,7 @@ NVM_IOJS_ORG_MIRROR=https://iojs.org/dist nvm install iojs-v1.0.3
 `nvm use` will not, by default, create a "current" symlink. Set `$NVM_SYMLINK_CURRENT` to "true" to enable this behavior, which is sometimes useful for IDEs. Note that using `nvm` in multiple shell tabs with this environment variable enabled can cause race conditions.
 
 #### Pass Authorization header to mirror
+
 To pass an Authorization header through to the mirror url, set `$NVM_AUTH_HEADER`
 
 ```sh
@@ -399,6 +404,7 @@ After saving the file, run `source ~/.zshrc` to reload the configuration with th
 ##### fish
 
 This requires that you have [bass](https://github.com/edc/bass) installed.
+
 ```fish
 # ~/.config/fish/functions/nvm.fish
 function nvm

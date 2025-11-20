@@ -1,49 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Breakout 01: post function</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="author" content="The OMM team" />
-    </head>
-    <body>
-        <form>
-            <input type="text" placeholder="username" name="user" />
-            <button type="submit">Go!</button>
-        </form>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Breakout 01: post function</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="The OMM team" />
+  </head>
+  <body>
+    <form>
+      <input type="text" placeholder="username" name="user" />
+      <button type="submit">Go!</button>
+    </form>
 
-        <div id="output"></div>
+    <div id="output"></div>
 
-        <script>
-            async function postJSON(url, callback, params) {
-                // TODO create a post request here and handle the response
-                const req = await fetch(url, { method: "POST", body: params });
-                const res = await req.json();
+    <script>
+      async function postJSON(url, callback, params) {
+        // TODO create a post request here and handle the response
+        const req = await fetch(url, { method: "POST", body: params });
+        const res = await req.json();
 
-                if (!response.ok) {
-                    throw new Error(`Response status: ${response.status}`);
-                }
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+        }
 
-                callback(res);
-            }
+        callback(res);
+      }
 
-            const form = document.querySelector("form");
-            const userInput = document.querySelector("input[name=user]");
-            const output = document.querySelector("#output");
+      const form = document.querySelector("form");
+      const userInput = document.querySelector("input[name=user]");
+      const output = document.querySelector("#output");
 
-            form.addEventListener("submit", async function (e) {
-                e.preventDefault(); // don't submit at this point.
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault(); // don't submit at this point.
 
-                // with params!
-                const params = JSON.stringify({ user: userInput.value });
-                await postJSON(
-                    "http://httpbin.org/post",
-                    function (res) {
-                        output.innerHTML = res.json.user;
-                    },
-                    params
-                );
-            });
-        </script>
-    </body>
+        // with params!
+        const params = JSON.stringify({ user: userInput.value });
+        await postJSON(
+          "http://httpbin.org/post",
+          function (res) {
+            output.innerHTML = res.json.user;
+          },
+          params,
+        );
+      });
+    </script>
+  </body>
 </html>
