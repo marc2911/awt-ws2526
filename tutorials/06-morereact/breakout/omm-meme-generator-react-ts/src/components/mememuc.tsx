@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import "./mememuc.css";
 
 const MEME_API_BASE_URL = "http://localhost:3001";
@@ -17,19 +17,19 @@ interface Caption {
   bottomY: number;
 }
 
-const OmmMemeMUC: React.FC = () => {
+const OmmMemeMUC = () => {
   // two hooks
   // the two returned variables per hook (here on the example of the section line) represent:
   // - memeState => the list of all rendered memes. To be updated with data from the API, as soon as the user types some caption
   // - setMemeState => a callback that can be used to update the memeState, e.g. when a new rendered meme is received from the API
-  const [selectState, setSelectState] = React.useState<Meme>();
-  const [memeState, setMemeState] = React.useState<Meme[]>([
+  const [selectState, setSelectState] = useState<Meme>();
+  const [memeState, setMemeState] = useState<Meme[]>([
     {
       name: "doge",
       link: `${MEME_API_BASE_URL}/memes/doge`,
     },
   ]);
-  const [captionState, setCaptionState] = React.useState<Caption>({
+  const [captionState, setCaptionState] = useState<Caption>({
     topText: "",
     topX: 0,
     topY: 0,
@@ -74,7 +74,7 @@ const OmmMemeMUC: React.FC = () => {
 
   // useEffect for componentDidMount
   // see: https://reactjs.org/docs/hooks-effect.html
-  React.useEffect(() => {
+  useEffect(() => {
     getMemes();
   }, []);
 
@@ -87,16 +87,30 @@ const OmmMemeMUC: React.FC = () => {
   return (
     <div className="mememuc">
       <ul className="meme-list">
-        {/*
+        {
+          /*
       TODO This div should contain a list of all available meme templates (will be shown on the left side of the webapp).
       memeState contains a list of all available templates
       TODO also mind that each meme template should have a onClick listener, calling setSelectState, in order to be selectable
-      */}
+      */
+          memeState.map(meme => (
+            <div
+              key={meme.link}
+              className="meme"
+              onClick={() => setSelectState(meme)}
+            >
+              <img src={meme.link} />
+              <p className="caption captionTop">{meme.name}</p>
+            </div>
+          ))
+        }
       </ul>
       <div className="results">
-        {/*
+        {
+          /*
       TODO this div should contain the rendered meme (= template + caption), which is received from the API
-      */}
+      */ results
+        }
       </div>
       <div className="params">
         <div className="texts">
