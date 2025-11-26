@@ -16,7 +16,7 @@ async function hashPassword(password: string) {
 }
 
 export function cannot(req: CustomRequest, permission: Permission[]) {
-  const cannot = !req.claims?.permission.some((p) => permission.includes(p));
+  const cannot = !req.claims?.permission.some(p => permission.includes(p));
 
   return cannot;
 }

@@ -34,10 +34,10 @@
             Authorization: "Bearer <token>", // token
           },
           body: params, // body data type must match "Content-Type" header
-        }).then((res) => {
+        }).then(res => {
           if (res.status === 204) return;
 
-          res.json().then((json) => {
+          res.json().then(json => {
             callback(json);
           });
         });
@@ -57,7 +57,7 @@
 
           function (users) {
             // TODO 1) append one p tag for each followee
-            output.innerHTML += users.map((user) => `<p>${user.login}</p>`);
+            output.innerHTML += users.map(user => `<p>${user.login}</p>`);
           },
           null,
         );

@@ -29,8 +29,8 @@
             Authorization: "Bearer tokengoeshere", // TODO replace this with your own token
           },
           body: params, // body data type must match "Content-Type" header
-        }).then((res) => {
-          res.json().then((json) => {
+        }).then(res => {
+          res.json().then(json => {
             alert(JSON.stringify(json));
           });
         });
@@ -50,7 +50,7 @@
           `https://api.github.com/users/${myUserInput.value}/following`,
           function (users) {
             output.innerHTML = "";
-            users.forEach((user) => {
+            users.forEach(user => {
               output.innerHTML += `<p>${user.login}</p>`;
             });
           },

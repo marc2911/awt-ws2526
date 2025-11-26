@@ -74,8 +74,8 @@ class DataStorage {
     if (replace || !this.playlists[playlistId].songs.contains(trackId)) {
       this.playlists[playlistId].songs.push(trackId);
 
-      fetch(`https://itunes.apple.com/lookup?id=${trackId}`).then((json) =>
-        json.json().then((res) => {
+      fetch(`https://itunes.apple.com/lookup?id=${trackId}`).then(json =>
+        json.json().then(res => {
           this.songs[trackId] = {
             artist: res.results[0].artistName,
             title: res.results[0].trackName,

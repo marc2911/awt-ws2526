@@ -1,7 +1,7 @@
-import logo from "./logo.svg";
-import "./App.css";
-import Meme from "./Meme";
 import { Component } from "react";
+import "./App.css";
+import logo from "./logo.svg";
+import Meme from "./Meme";
 
 export default class App extends Component {
   state = {
@@ -30,7 +30,7 @@ export default class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
-        {this.state.memes.map((aMeme) => (
+        {this.state.memes.map(aMeme => (
           <Meme
             memetemplate={aMeme.template}
             captionTop={aMeme.captionTop}

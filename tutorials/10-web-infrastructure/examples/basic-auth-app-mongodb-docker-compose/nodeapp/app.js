@@ -37,7 +37,7 @@ app.use((req, res, next) => {
   const users = db.get("users");
   users
     .findOne({ basicauthtoken: req.headers.authorization })
-    .then((user) => {
+    .then(user => {
       if (user) {
         req.username = user.username;
         next();
@@ -46,7 +46,7 @@ app.use((req, res, next) => {
         res.status(401).send();
       }
     })
-    .catch((e) => {
+    .catch(e => {
       console.error(e);
       res.set("WWW-Authenticate", 'Basic realm="401"');
       res.status(401).send();

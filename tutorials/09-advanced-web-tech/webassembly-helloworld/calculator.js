@@ -118,7 +118,7 @@ if (ENVIRONMENT_IS_NODE) {
     return fs.readFileSync(filename, binary ? undefined : "utf8");
   };
 
-  readBinary = (filename) => {
+  readBinary = filename => {
     var ret = read_(filename, true);
     if (!ret.buffer) {
       ret = new Uint8Array(ret);
@@ -267,7 +267,7 @@ if (ENVIRONMENT_IS_NODE) {
   {
     // include: web_or_worker_shell_read.js
 
-    read_ = (url) => {
+    read_ = url => {
       var xhr = new XMLHttpRequest();
       xhr.open("GET", url, false);
       xhr.send(null);
@@ -275,7 +275,7 @@ if (ENVIRONMENT_IS_NODE) {
     };
 
     if (ENVIRONMENT_IS_WORKER) {
-      readBinary = (url) => {
+      readBinary = url => {
         var xhr = new XMLHttpRequest();
         xhr.open("GET", url, false);
         xhr.responseType = "arraybuffer";
@@ -303,7 +303,7 @@ if (ENVIRONMENT_IS_NODE) {
     // end include: web_or_worker_shell_read.js
   }
 
-  setWindowTitle = (title) => (document.title = title);
+  setWindowTitle = title => (document.title = title);
 } else {
   throw new Error("environment detection error");
 }
@@ -2118,7 +2118,7 @@ function checkUnflushedContent() {
   var oldOut = out;
   var oldErr = err;
   var has = false;
-  out = err = (x) => {
+  out = err = x => {
     has = true;
   };
   try {

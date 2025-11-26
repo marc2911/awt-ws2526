@@ -8,7 +8,7 @@
     <script>
       let socket = io();
       socket.emit("from-client", "hello");
-      socket.on("from-server", (data) => {
+      socket.on("from-server", data => {
         console.log(data); // 'hello, again'
       });
     </script>

@@ -60,7 +60,7 @@ class Songs extends React.Component {
     this.state = { detailsShown: false, detailSong: null };
   }
 
-  handleDetailsClick = (song) => {
+  handleDetailsClick = song => {
     this.setState({ detailsShown: true, detailSong: song });
   };
 

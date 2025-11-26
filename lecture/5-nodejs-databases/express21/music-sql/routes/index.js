@@ -9,7 +9,7 @@ let connection = sql.createConnection({
   database: "music",
 });
 
-connection.connect((err) => {
+connection.connect(err => {
   if (err) console.log("Failed to connect to db");
   else console.log("Connected to music db.");
 });

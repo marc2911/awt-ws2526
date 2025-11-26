@@ -18,7 +18,7 @@
         context.drawImage(image, 0, 0);
       };
       // subscribe viewing and receive data pushed from server
-      socket.on("viewing", (data) => {
+      socket.on("viewing", data => {
         image.src = data;
       });
     </script>

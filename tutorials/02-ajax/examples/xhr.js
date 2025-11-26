@@ -1,4 +1,4 @@
-handleResults = (result) => {
+handleResults = result => {
   console.log(result);
 };
 const url = "https://httpbin.org/post";

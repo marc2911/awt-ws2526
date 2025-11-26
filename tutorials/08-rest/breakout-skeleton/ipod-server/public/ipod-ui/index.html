@@ -97,7 +97,7 @@
     </div>
 
     <script>
-      const showErrorFooter = (error) => {
+      const showErrorFooter = error => {
         console.log(error);
         document
           .querySelector("#screencontent #errorfooter")
@@ -112,8 +112,8 @@
           .getElementById("searchicon")
           .setAttribute("style", "display: block");
         fetch("http://localhost:3000/playlists/1")
-          .then((json) =>
-            json.json().then((res) => {
+          .then(json =>
+            json.json().then(res => {
               let playlistTitle = res.name;
               console.log("playlist name: " + playlistTitle);
               document.querySelector("#screencontent h1").innerHTML =
@@ -123,13 +123,13 @@
           .catch(showErrorFooter);
 
         fetch("http://localhost:3000/playlists/1/songs")
-          .then((json) =>
-            json.json().then((res) => {
+          .then(json =>
+            json.json().then(res => {
               document.querySelector("#screencontent ul").innerHTML = "";
-              res.forEach((songId) => {
+              res.forEach(songId => {
                 fetch(`http://localhost:3000/playlists/1/songs/${songId}`)
-                  .then((json) =>
-                    json.json().then((song) => {
+                  .then(json =>
+                    json.json().then(song => {
                       document.querySelector("#screencontent ul").innerHTML +=
                         `<li>
                             <p class="artistname">${song.artist}</p>
@@ -147,7 +147,7 @@
 
       document
         .querySelector("#screencontent #inputfooter")
-        .addEventListener("focusout", (e) => {
+        .addEventListener("focusout", e => {
           document
             .querySelector("#screencontent #inputfooter")
             .setAttribute("style", "display: none");
@@ -165,20 +165,18 @@
           }
         });
 
-      document.getElementById("searchicon").addEventListener("click", (ev) => {
+      document.getElementById("searchicon").addEventListener("click", ev => {
         document
           .querySelector("#screencontent #inputfooter")
           .setAttribute("style", "display: block");
       });
 
-      document
-        .getElementById("playlisticon")
-        .addEventListener("click", (ev) => {
-          document
-            .querySelector("#screencontent #inputfooter")
-            .setAttribute("style", "display: none");
-          renderPlaylist();
-        });
+      document.getElementById("playlisticon").addEventListener("click", ev => {
+        document
+          .querySelector("#screencontent #inputfooter")
+          .setAttribute("style", "display: none");
+        renderPlaylist();
+      });
 
       function search(searchQuery) {
         console.log("searching for: " + searchQuery);
@@ -190,15 +188,15 @@
           .setAttribute("style", "display: none");
 
         fetch(`http://localhost:3000/search?term=${searchQuery}`)
-          .then((json) =>
-            json.json().then((res) => {
+          .then(json =>
+            json.json().then(res => {
               console.log(res);
 
               // show search result
               document.querySelector("#screencontent h1").innerHTML =
                 "Search Results";
               document.querySelector("#screencontent ul").innerHTML = "";
-              res.forEach((song) => {
+              res.forEach(song => {
                 document.querySelector("#screencontent ul").innerHTML += `<li>
                             <p class="artistname">${song.artist}</p>
                             <p class="songtitle">${song.title}</p>

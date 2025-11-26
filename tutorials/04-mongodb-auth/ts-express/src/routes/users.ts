@@ -13,8 +13,8 @@ router.get("/", async (req: CustomRequest, res) => {
 
   const dbUsers = await User.find()
     .lean()
-    .transform<UserDTO[]>((docs) =>
-      docs.map((doc) => ({
+    .transform<UserDTO[]>(docs =>
+      docs.map(doc => ({
         id: doc._id.toString(),
         username: doc.username,
         permissions: doc.permissions,

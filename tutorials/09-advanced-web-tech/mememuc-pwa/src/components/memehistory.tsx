@@ -32,7 +32,7 @@ const MemeHistory = () => {
   return (
     <div>
       <List>
-        {memesInHistory.map((meme) => (
+        {memesInHistory.map(meme => (
           <ListItem>
             <LazyLoadMeme
               meme={{

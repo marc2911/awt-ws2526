@@ -20,7 +20,7 @@ const IMAGES = {
 // Routes
 router.get("/memes", (req, res) => {
   res.json(
-    Object.keys(IMAGES).map((key) => ({ name: key, link: `/memes/${key}` })),
+    Object.keys(IMAGES).map(key => ({ name: key, link: `/memes/${key}` })),
   );
 });
 

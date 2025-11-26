@@ -29,10 +29,10 @@
       let video = document.getElementById("anchor");
       navigator.mediaDevices
         .getUserMedia({ video: true })
-        .then((stream) => {
+        .then(stream => {
           video.srcObject = stream;
         })
-        .catch((error) => {
+        .catch(error => {
           document.body.textContent =
             "Could not access the camera. Error: " + error.name;
         });

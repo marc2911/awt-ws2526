@@ -41,10 +41,10 @@ const OmmMemeMUC: React.FC = () => {
   // method to fetch available meme templates and rendered memes (depending on the passed url parameters)
   const getMemes = () => {
     fetch(`${MEME_API_BASE_URL}/memes`)
-      .then((res) => res.json())
+      .then(res => res.json())
       .then((memes: Meme[]) => {
         setMemeState(
-          memes.map((meme) => {
+          memes.map(meme => {
             meme.link = `${MEME_API_BASE_URL}${meme.link}`;
             return meme;
           }),

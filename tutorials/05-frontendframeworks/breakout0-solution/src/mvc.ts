@@ -62,7 +62,7 @@ class Controller {
     const model = new Model();
     const view = new View(model);
 
-    model.observer = (m) => view.update(m);
+    model.observer = m => view.update(m);
 
     window.addEventListener("increment counter", () => model.inc());
     window.addEventListener("decrement counter", () => model.dec());

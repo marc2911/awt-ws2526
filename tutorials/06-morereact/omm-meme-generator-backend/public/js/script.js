@@ -8,13 +8,13 @@ class MemeMUC {
     this.meme = null;
 
     const inputs = [...document.querySelectorAll(".controls input")];
-    inputs.forEach((i) => (i.disabled = true));
+    inputs.forEach(i => (i.disabled = true));
 
     const listOfMemes = document.querySelector("aside ul");
 
     fetch(URLS.MEMES, { method: "GET" })
-      .then((res) => res.json())
-      .then((memes) => {
+      .then(res => res.json())
+      .then(memes => {
         this.availableMemes = memes;
 
         listOfMemes.innerHTML = "";
@@ -25,7 +25,7 @@ class MemeMUC {
           li.addEventListener("click", () => {
             listOfMemes
               .querySelectorAll("li")
-              .forEach((li) => li.classList.remove("selected"));
+              .forEach(li => li.classList.remove("selected"));
             li.classList.add("selected");
             this.meme = name;
             this.update();
@@ -56,14 +56,14 @@ class MemeMUC {
   update() {
     if (this.meme) {
       const url = new URL(`${URLS.MEMES}/${this.meme}`, window.location.origin);
-      Object.keys(this.parameters).forEach((key) =>
+      Object.keys(this.parameters).forEach(key =>
         url.searchParams.append(key, this.parameters[key]),
       );
       document.querySelector(".result img").src = url;
     }
 
     const inputs = [...document.querySelectorAll(".controls input")];
-    inputs.forEach((i) => (i.disabled = !Boolean(this.meme)));
+    inputs.forEach(i => (i.disabled = !Boolean(this.meme)));
   }
 }
 

@@ -35,10 +35,10 @@ const OmmMemeMUC: React.FC = () => {
   });
   const getMemes = () => {
     fetch(`${MEME_API_BASE_URL}/memes`)
-      .then((res) => res.json())
+      .then(res => res.json())
       .then((memes: Meme[]) => {
         setMemeState(
-          memes.map((meme) => {
+          memes.map(meme => {
             meme.link = `${MEME_API_BASE_URL}${meme.link}`;
             return meme;
           }),
@@ -81,7 +81,7 @@ const OmmMemeMUC: React.FC = () => {
   return (
     <div className="mememuc">
       <ul className="meme-list">
-        {memeState.map((meme) => {
+        {memeState.map(meme => {
           return (
             <li
               key={meme.link}
