@@ -1,7 +1,6 @@
-import React from "react";
+import { Card, CardContent, Typography } from "@mui/material";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Meme from "../model/Meme";
-import { Card, CardContent, Typography } from "@mui/material";
 
 export interface LazyLoadMemeProps {
   meme: Meme;

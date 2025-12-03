@@ -1,11 +1,10 @@
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
 import Layout from "./pages/Layout";
 import MyFirstPage from "./pages/MyFirstPage";
 import MySecondPage from "./pages/MySecondPage";
-import SomeThirdPage from "./pages/SomeThirdPage";
 import NoPage from "./pages/NoPage";
-import "./App.css";
+import SomeThirdPage from "./pages/SomeThirdPage";
 
 function App() {
   return (
