@@ -1,13 +1,12 @@
-// lib.js 
+// lib.js
 function double(x) {
-	return x * 2;
+  return x * 2;
 }
 
 module.exports = {
-	double: double,
+  double: double,
 };
 
-
 // main.js
-const double = require('lib').double;
+const double = require("lib").double;
 console.log(double(2));

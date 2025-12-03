@@ -1,6 +1,6 @@
-import React from 'react';
-import './App.css';
-import OmmMememuc from './components/mememuc'
+import React from "react";
+import "./App.css";
+import OmmMememuc from "./components/mememuc";
 
 const App: React.FC = () => {
   return (
@@ -11,6 +11,6 @@ const App: React.FC = () => {
       <OmmMememuc />
     </div>
   );
-}
+};
 
 export default App;

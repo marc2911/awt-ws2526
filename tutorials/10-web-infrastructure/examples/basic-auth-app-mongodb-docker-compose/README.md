@@ -13,11 +13,11 @@ The default login is username `student` and password `ommisawesome`
 ## Docker Containers
 
 ### Container _mongo_
- 
+
 Contains a plain MongoDB installation
 
 ### Container _nodeapp_
- 
+
 Implementes a simple NodeJS app. All routes (e.g. _/users_) require basic authentication. The login is checked with the database: The collection _users_ contains allowed Basic Auth Tokens. In _datagenerator/usersdata.json_ is a demo user created (the matching username is _student_ and password _ommisawesome_)
 
 ### Container _datagenerator_
