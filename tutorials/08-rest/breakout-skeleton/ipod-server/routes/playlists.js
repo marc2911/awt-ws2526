@@ -21,6 +21,58 @@ router.get("/:playlistId", function (req, res, next) {
   });
 });
 
-// TODO add other playlists API endpoints here
+router.get("/:playlistId/songs", (req, res, next) => {
+  /**@type {import('../model/DataStorage')}*/
+  const dataStore = req.dataStorage;
+
+  const playlistId = req.params.playlistId;
+  const songIds = dataStore.getSongsOfPlaylist(playlistId);
+
+  res.send(songIds);
+});
+
+router.get("/:playlistId/songs/:songId", (req, res, next) => {
+  /**@type {import('../model/DataStorage')}*/
+  const dataStore = req.dataStorage;
+
+  const songId = req.params.songId;
+  const songDetail = dataStore.getSongDetail(songId);
+
+  res.send(songDetail);
+});
+
+router.post("/:playlistId/songs/:songId", (req, res, next) => {
+  /**@type {import('../model/DataStorage')}*/
+  const dataStore = req.dataStorage;
+
+  const playlistId = req.params.playlistId;
+  const songId = req.params.songId;
+  const success = dataStore.addSongToPlaylist(playlistId, songId, false);
+  if (!success) throw new Error("Could not add");
+
+  res.status(201).send();
+});
+
+router.put("/:playlistId/songs/:songId", (req, res, next) => {
+  /**@type {import('../model/DataStorage')}*/
+  const dataStore = req.dataStorage;
+
+  const playlistId = req.params.playlistId;
+  const songId = req.params.songId;
+  dataStore.addSongToPlaylist(playlistId, songId, true);
+
+  res.status(201).send();
+});
+
+router.delete("/:playlistId/songs/:songId", (req, res, next) => {
+  /**@type {import('../model/DataStorage')}*/
+  const dataStore = req.dataStorage;
+
+  const playlistId = req.params.playlistId;
+  const songId = req.params.songId;
+  dataStore.deleteSongFromPlaylist(playlistId, songId);
+
+  res.status(200).send();
+});
 
 module.exports = router;

@@ -1,7 +1,33 @@
 var fetch = require("node-fetch");
 
+/**
+ * @typedef {Object} Song
+ * @property {string} artist
+ * @property {string} title
+ */
+
+/**
+ * A map of songId → Song
+ * @typedef {Object.<number, Song>} SongMap
+ */
+
+/**
+ * @typedef {Object} Playlist
+ * @property {number} id
+ * @property {string} name
+ * @property {number[]} songs   - Array of song IDs
+ */
+
+/**
+ * A map of playlistId → Playlist
+ * @typedef {Object.<number, Playlist>} PlaylistMap
+ */
+
+/**
+ * The server's "database"
+ */
 class DataStorage {
-  // the server's "database"
+  /**@type{PlaylistMap} */
   playlists = {
     1: {
       id: 1,
@@ -11,6 +37,8 @@ class DataStorage {
       ],
     },
   };
+
+  /**@type{SongMap} */
   songs = {
     1440817260: {
       artist: "John Lennon",
@@ -43,7 +71,11 @@ class DataStorage {
     return Object.keys(this.playlists);
   }
 
-  // returns playlist metadata (no songs)
+  /**
+   *
+   * @param {string} id
+   * @returns {Song} playlist metadata (no songs)
+   */
   getPlaylistById(id) {
     let playlist = this.playlists[id];
     return {
@@ -52,13 +84,21 @@ class DataStorage {
     };
   }
 
-  // return song ids
+  /**
+   *
+   * @param {string} id
+   * @returns {number[]} song ids
+   */
   getSongsOfPlaylist(id) {
     let playlist = this.playlists[id];
     return playlist.songs;
   }
 
-  // return song metadata
+  /**
+   *
+   * @param {string} id
+   * @returns {Song} song metadata
+   */
   getSongDetail(id) {
     let song = this.songs[id];
     return {
@@ -68,8 +108,13 @@ class DataStorage {
     };
   }
 
-  // if exists replace current song if true, add it another time otherwise
-  // returns true if something was created
+  /**
+   * if exists replace current song if true, add it another time otherwise
+   * @param {string} playlistId
+   * @param {string} trackId
+   * @param {boolean} replace
+   * @returns true if something was created
+   */
   addSongToPlaylist(playlistId, trackId, replace) {
     if (replace || !this.playlists[playlistId].songs.contains(trackId)) {
       this.playlists[playlistId].songs.push(trackId);
@@ -88,10 +133,32 @@ class DataStorage {
     return false;
   }
 
+  /**
+   * if exists replace current song if true, add it another time otherwise
+   * returns true if something was created
+   * @param {string} playlistId
+   * @param {string} trackId
+   * @param {boolean} replace
+   * @returns
+   */
   deleteSongFromPlaylist(playlistId, trackId) {
     let i = this.playlists[playlistId].songs.indexOf(parseInt(trackId));
     if (i > -1) {
       this.playlists[playlistId].songs.splice(i, 1);
+    }
+  }
+
+  /**
+   * Add new songs from a list
+   *
+   * @param {Array<{id: number, artist: string, title: string}>} songsList
+   */
+  addNewSongs(songsList) {
+    for (const song of songsList) {
+      this.songs[song.id] = {
+        artist: song.artist,
+        title: song.title,
+      };
     }
   }
 }

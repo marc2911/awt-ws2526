@@ -6,6 +6,7 @@ var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
 var playlistsRouter = require("./routes/playlists");
+var searchRouter = require("./routes/search");
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use((req, res, next) => {
 app.use("/", indexRouter);
 // all requests to /playlists/... are handled by the playlists middleware
 app.use("/playlists", playlistsRouter);
+app.use("/search", searchRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
