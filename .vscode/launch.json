@@ -5,7 +5,7 @@
       "type": "node",
       "request": "launch",
       "name": "Debug ts-node",
-      "cwd": "${workspaceFolder}/tutorials/04-mongodb-auth/ts-express",
+      "cwd": "${workspaceFolder}/tutorials/08-rest/breakout-skeleton/ts-express",
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["run", "start"],
       "skipFiles": ["<node_internals>/**"],
