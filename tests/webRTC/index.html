@@ -1,0 +1,43 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <video></video>
+    <button>Play</button>
+  </body>
+  <script>
+    const player = document.querySelector("video");
+    const btn = document.querySelector("button");
+
+    const playText = "Play";
+    const pauseText = "Pause";
+
+    btn.addEventListener("click", async e => {
+      if (player.paused) {
+        await player.play();
+        btn.textContent = pauseText;
+      } else {
+        await player.pause();
+        btn.textContent = playText;
+      }
+    });
+
+    const main = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+          audio: false,
+        });
+
+        player.srcObject = stream;
+      } catch (err) {
+        console.error("Error accessing media devices.", err);
+      }
+    };
+
+    main();
+  </script>
+</html>
