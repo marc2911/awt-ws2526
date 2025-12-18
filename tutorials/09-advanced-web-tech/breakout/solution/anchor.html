@@ -26,6 +26,7 @@
 
       // use MediaDevices API
       // docs: https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
+      /** @type {HTMLVideoElement} */
       let video = document.getElementById("anchor");
       navigator.mediaDevices
         .getUserMedia({ video: true })
@@ -46,30 +47,32 @@
         .addEventListener("click", () => stopStream());
 
       // render processing
+      /** @type {HTMLCanvasElement} */
       let canvas = document.getElementById("capture");
       let context = canvas.getContext("2d");
-      let stream = null;
+      /** @type {number|null} */
+      let intervalId = null;
       const startStream = () => {
         // stream object has created, nothing to do.
-        if (stream) {
+        if (intervalId) {
           return;
         }
         document.getElementById("message").innerText = "Streaming: ON";
         // use canvas to render image data and send to server
-        stream = setInterval(() => {
+        intervalId = setInterval(() => {
           context.drawImage(video, 0, 0, 640, 480);
           socket.emit("streaming", canvas.toDataURL("image/webp"));
         }, 40); // 25fps = 1s / 40ms
       };
       const stopStream = () => {
         // no stream object, nothing to do.
-        if (!stream) {
+        if (!intervalId) {
           return;
         }
         document.getElementById("message").innerText = "Streaming: OFF";
         // clear render interval
-        clearInterval(stream);
-        stream = null;
+        clearInterval(intervalId);
+        intervalId = null;
       };
     </script>
   </body>

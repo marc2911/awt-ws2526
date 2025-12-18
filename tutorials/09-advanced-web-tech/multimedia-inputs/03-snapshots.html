@@ -13,16 +13,28 @@
   </head>
   <body>
     <video autoplay></video>
+    <h2 id="video-status"></h2>
+    <audio
+      src="https://cdn.freesound.org/previews/61/61059_607076-lq.mp3"
+    ></audio>
 
     <script>
       // when moving this to Polymer, keep in mind to adapt it as in example 04
       var video = document.querySelector("video"),
         canvas;
+      const videoStatus = document.getElementById("video-status");
+      const audio = document.querySelector("audio");
+
+      async function snapShotSound() {
+        console.log("Snapshot taken");
+        await audio.play();
+      }
+
       /**
        *  generates a still frame image from the stream in the <video>
        *  appends the image to the <body>
        */
-      function takeSnapshot() {
+      async function takeSnapshot() {
         var img =
           document.querySelector("img") || document.createElement("img");
         var context;
@@ -35,6 +47,8 @@
         context.drawImage(video, 0, 0, width, height);
         img.src = canvas.toDataURL("image/png");
         document.body.appendChild(img);
+
+        await snapShotSound();
       }
       // use MediaDevices API
       // docs: https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
@@ -49,8 +63,12 @@
           })
           // permission denied:
           .catch(function (error) {
-            document.body.textContent =
+            videoStatus.textContent =
               "Could not access the camera. Error: " + error.name;
+            const btn = document.createElement("button");
+            btn.textContent = "Camera access denied. Click for sound.";
+            btn.addEventListener("click", snapShotSound);
+            document.body.append(btn);
           });
       }
     </script>
