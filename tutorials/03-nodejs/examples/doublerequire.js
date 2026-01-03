@@ -4,7 +4,7 @@ function double(x) {
 }
 
 module.exports = {
-  double: double,
+  double: double
 };
 
 // main.js

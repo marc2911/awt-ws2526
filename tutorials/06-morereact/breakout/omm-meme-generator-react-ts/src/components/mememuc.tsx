@@ -26,8 +26,8 @@ const OmmMemeMUC = () => {
   const [memeState, setMemeState] = useState<Meme[]>([
     {
       name: "doge",
-      link: `${MEME_API_BASE_URL}/memes/doge`,
-    },
+      link: `${MEME_API_BASE_URL}/memes/doge`
+    }
   ]);
   const [captionState, setCaptionState] = useState<Caption>({
     topText: "",
@@ -35,7 +35,7 @@ const OmmMemeMUC = () => {
     topY: 0,
     bottomText: "",
     bottomX: 0,
-    bottomY: 0,
+    bottomY: 0
   });
 
   // method to fetch available meme templates and rendered memes (depending on the passed url parameters)
@@ -47,7 +47,7 @@ const OmmMemeMUC = () => {
           memes.map(meme => {
             meme.link = `${MEME_API_BASE_URL}${meme.link}`;
             return meme;
-          }),
+          })
         );
       });
   };
@@ -68,7 +68,7 @@ const OmmMemeMUC = () => {
   const captionChanged = (e: any) => {
     setCaptionState({
       ...captionState,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 

@@ -17,7 +17,7 @@ router.get("/:playlistId", function (req, res, next) {
   // send only meta data (no songs), to reduce data traffic
   res.send({
     id: playlist.id,
-    name: playlist.name,
+    name: playlist.name
   });
 });
 

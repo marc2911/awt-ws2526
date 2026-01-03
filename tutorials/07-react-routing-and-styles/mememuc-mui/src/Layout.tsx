@@ -12,14 +12,14 @@ import {
   ListItemButton,
   ListItemText,
   Toolbar,
-  Typography,
+  Typography
 } from "@mui/material";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 const navItems = [
   ["/", "Home"],
-  ["/history", "Meme History"],
+  ["/history", "Meme History"]
 ] as const;
 
 const Layout = () => {
@@ -97,11 +97,11 @@ const Layout = () => {
               open={mobileOpen}
               onClose={handleDrawerToggle}
               ModalProps={{
-                keepMounted: true, // Better open performance on mobile.
+                keepMounted: true // Better open performance on mobile.
               }}
               sx={{
                 display: { xs: "block", sm: "none" },
-                "& .MuiDrawer-paper": { boxSizing: "border-box", width: 240 },
+                "& .MuiDrawer-paper": { boxSizing: "border-box", width: 240 }
               }}
             >
               {drawer}

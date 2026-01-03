@@ -25,7 +25,7 @@
         return this.c;
       },
       enumerable: true,
-      configurable: true,
+      configurable: true
     });
     /** Increment the counter */
     Model.prototype.inc = function () {

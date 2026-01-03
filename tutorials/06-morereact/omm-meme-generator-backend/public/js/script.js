@@ -1,5 +1,5 @@
 const URLS = {
-  MEMES: "/memes",
+  MEMES: "/memes"
 };
 
 class MemeMUC {
@@ -49,7 +49,7 @@ class MemeMUC {
       y: parseInt(inputs[2].value) || 0,
       text2: inputs[3].value || "",
       x2: parseInt(inputs[4].value) || 0,
-      y2: parseInt(inputs[5].value) || 0,
+      y2: parseInt(inputs[5].value) || 0
     };
   }
 
@@ -57,7 +57,7 @@ class MemeMUC {
     if (this.meme) {
       const url = new URL(`${URLS.MEMES}/${this.meme}`, window.location.origin);
       Object.keys(this.parameters).forEach(key =>
-        url.searchParams.append(key, this.parameters[key]),
+        url.searchParams.append(key, this.parameters[key])
       );
       document.querySelector(".result img").src = url;
     }

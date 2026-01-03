@@ -17,8 +17,8 @@ router.get("/", async (req: CustomRequest, res) => {
       docs.map(doc => ({
         id: doc._id.toString(),
         username: doc.username,
-        permissions: doc.permissions,
-      })),
+        permissions: doc.permissions
+      }))
     );
 
   res.json(dbUsers);
@@ -35,7 +35,7 @@ router.get("/:id", async (req: CustomRequest, res) => {
   const dto: UserDTO = {
     id: dbUser._id.toString(),
     username: dbUser.username,
-    permissions: dbUser.permissions,
+    permissions: dbUser.permissions
   };
 
   res.json(dto);

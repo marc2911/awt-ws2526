@@ -16,7 +16,7 @@ router.get("/:playlistId", (req: CustomRequest, res) => {
 
   res.send({
     id: playlist.id,
-    name: playlist.name,
+    name: playlist.name
   });
 });
 
@@ -45,7 +45,7 @@ router.post("/:playlistId/songs/:songId", async (req: CustomRequest, res) => {
   const success = await req.dataStorage!.addSongToPlaylist(
     playlistId,
     songId,
-    false,
+    false
   );
   if (!success) throw new Error("Could not add");
 

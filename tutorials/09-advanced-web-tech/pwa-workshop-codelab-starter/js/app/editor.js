@@ -13,11 +13,11 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-import { basicSetup } from 'codemirror';
-import { EditorView, keymap } from '@codemirror/view';
-import { indentWithTab } from '@codemirror/commands';
-import { markdown } from '@codemirror/lang-markdown';
-import { oneDark } from '@codemirror/theme-one-dark';
+import { basicSetup } from "codemirror";
+import { EditorView, keymap } from "@codemirror/view";
+import { indentWithTab } from "@codemirror/commands";
+import { markdown } from "@codemirror/lang-markdown";
+import { oneDark } from "@codemirror/theme-one-dark";
 
 export class Editor {
   constructor(parent) {
@@ -37,7 +37,7 @@ export class Editor {
           }
         }
       },
-      lineWrapping: true,
+      lineWrapping: true
     });
   }
 
@@ -46,7 +46,7 @@ export class Editor {
 
     const extensions = [basicSetup, keymap.of([indentWithTab]), markdown()];
 
-    if (mode === 'night') {
+    if (mode === "night") {
       extensions.push(oneDark);
     }
 
@@ -64,7 +64,7 @@ export class Editor {
           }
         }
       },
-      lineWrapping: true,
+      lineWrapping: true
     });
 
     this.setContent(content);
@@ -75,8 +75,8 @@ export class Editor {
       changes: {
         from: 0,
         to: this._editor.state.doc.toString().length,
-        insert: content,
-      },
+        insert: content
+      }
     });
   }
 

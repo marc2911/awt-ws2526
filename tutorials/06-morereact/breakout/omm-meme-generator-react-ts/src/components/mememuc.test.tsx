@@ -22,11 +22,11 @@ describe("OmmMemeMUC Component", () => {
     fireEvent.click(firstImg);
 
     const resultsContainer = document.querySelector(
-      ".results",
+      ".results"
     ) as HTMLDivElement;
 
     const result = resultsContainer.getElementsByTagName(
-      "img",
+      "img"
     )[0] as HTMLImageElement;
 
     expect(result).toBeDefined();

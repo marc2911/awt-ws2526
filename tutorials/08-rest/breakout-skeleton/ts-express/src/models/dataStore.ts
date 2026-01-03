@@ -25,9 +25,9 @@ export class DataStorage {
       id: 1,
       name: "My Cool Playlist",
       songs: [
-        1440817260, 1350457768, 1211829300, 1132801552, 487215156, 1440489651,
-      ],
-    },
+        1440817260, 1350457768, 1211829300, 1132801552, 487215156, 1440489651
+      ]
+    }
   };
 
   songs: SongMap = {
@@ -36,10 +36,10 @@ export class DataStorage {
     1211829300: { artist: "Dispatch", title: "Be Gone" },
     1132801552: {
       artist: "Ledinsky",
-      title: "DonaldTrumpMakesMeWannaSmokeSomeCrack",
+      title: "DonaldTrumpMakesMeWannaSmokeSomeCrack"
     },
     487215156: { artist: "3OH!3", title: "Set You Free" },
-    1440489651: { artist: "Creedence Clearwater Revival", title: "Lodi" },
+    1440489651: { artist: "Creedence Clearwater Revival", title: "Lodi" }
   };
 
   getAllPlaylists() {
@@ -64,7 +64,7 @@ export class DataStorage {
   async addSongToPlaylist(
     playlistId: number,
     trackId: number,
-    replace: boolean,
+    replace: boolean
   ) {
     if (!replace && this.playlists[playlistId].songs.includes(trackId))
       return false;
@@ -76,7 +76,7 @@ export class DataStorage {
 
     this.songs[trackId] = {
       artist: data.results[0].artistName,
-      title: data.results[0].trackName,
+      title: data.results[0].trackName
     };
 
     this.playlists[playlistId].songs.push(trackId);

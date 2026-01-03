@@ -26,7 +26,7 @@ router.get("/", async (req: CustomRequest, res) => {
   const songs: SongDetail[] = songsResponse.map(songJson => ({
     id: songJson.trackId,
     artist: songJson.artistName,
-    title: songJson.trackName,
+    title: songJson.trackName
   }));
 
   req.dataStorage!.addNewSongs(songs);

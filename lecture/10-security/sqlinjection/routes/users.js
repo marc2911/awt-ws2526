@@ -6,8 +6,8 @@ const sequelize = new Sequelize("test", "root", "root", {
   host: "localhost",
   dialect: "mysql",
   dialectOptions: {
-    multipleStatements: true,
-  },
+    multipleStatements: true
+  }
 });
 
 /* GET users listing. */

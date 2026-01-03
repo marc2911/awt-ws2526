@@ -22,8 +22,8 @@ const OmmMemeMUC: React.FC = () => {
   const [memeState, setMemeState] = React.useState<Meme[]>([
     {
       name: "doge",
-      link: `${MEME_API_BASE_URL}/memes/doge`,
-    },
+      link: `${MEME_API_BASE_URL}/memes/doge`
+    }
   ]);
   const [captionState, setCaptionState] = React.useState<Caption>({
     topText: "",
@@ -31,7 +31,7 @@ const OmmMemeMUC: React.FC = () => {
     topY: 0,
     bottomText: "",
     bottomX: 0,
-    bottomY: 0,
+    bottomY: 0
   });
   const getMemes = () => {
     fetch(`${MEME_API_BASE_URL}/memes`)
@@ -41,7 +41,7 @@ const OmmMemeMUC: React.FC = () => {
           memes.map(meme => {
             meme.link = `${MEME_API_BASE_URL}${meme.link}`;
             return meme;
-          }),
+          })
         );
       });
   };
@@ -62,7 +62,7 @@ const OmmMemeMUC: React.FC = () => {
   const captionChanged = (e: any) => {
     setCaptionState({
       ...captionState,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 

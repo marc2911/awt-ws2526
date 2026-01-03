@@ -9,19 +9,19 @@ export default class App extends Component {
       {
         template: "https://imgflip.com/s/meme/One-Does-Not-Simply.jpg",
         captionTop: "One does not simply",
-        captionBottom: "Write beautiful Javascript",
+        captionBottom: "Write beautiful Javascript"
       },
       {
         template: "https://imgflip.com/s/meme/Spiderman-Peter-Parker.jpg",
         captionTop: "It will be fun",
-        captionBottom: "I promise",
+        captionBottom: "I promise"
       },
       {
         template: "https://imgflip.com/s/meme/X-X-Everywhere.jpg",
         captionTop: "Callbacks",
-        captionBottom: "Callbacks Everywhere",
-      },
-    ],
+        captionBottom: "Callbacks Everywhere"
+      }
+    ]
   };
 
   render() {

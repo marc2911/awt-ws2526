@@ -14,18 +14,18 @@
  limitations under the License.
  */
 
-import { resolve } from 'path';
-import { defineConfig } from 'vite';
+import { resolve } from "path";
+import { defineConfig } from "vite";
 
 export default defineConfig({
   build: {
     emptyOutDir: false,
     rollupOptions: {
       input: {
-        index: resolve(__dirname, 'index.html'),
-        offline: resolve(__dirname, 'offline.html'),
-        'preview/index': resolve(__dirname, 'preview/index.html'),
-      },
-    },
-  },
+        index: resolve(__dirname, "index.html"),
+        offline: resolve(__dirname, "offline.html"),
+        "preview/index": resolve(__dirname, "preview/index.html")
+      }
+    }
+  }
 });

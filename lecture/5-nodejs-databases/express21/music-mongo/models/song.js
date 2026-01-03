@@ -7,7 +7,7 @@ const SongSchema = new Schema({
   title: String,
   artist: String,
   album: String,
-  runtime: Number,
+  runtime: Number
 });
 
 export default mongoose.model("mysong", SongSchema);

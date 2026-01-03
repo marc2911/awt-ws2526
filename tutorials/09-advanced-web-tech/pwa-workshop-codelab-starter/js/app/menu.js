@@ -14,7 +14,7 @@
  limitations under the License.
 */
 
-import { Actions } from '../lib/actions.js';
+import { Actions } from "../lib/actions.js";
 
 export class Menu extends Actions {
   /**
@@ -24,22 +24,24 @@ export class Menu extends Actions {
   constructor(parent, editor) {
     super();
     // Get toggle button and menu
-    this._toggle = parent.querySelector('.actions--toggle');
-    this._menu = parent.querySelector('.actions--menu');
+    this._toggle = parent.querySelector(".actions--toggle");
+    this._menu = parent.querySelector(".actions--menu");
 
     // Set up menu open/close and tabs
-    this._toggle.addEventListener('click', this._toggleMenu.bind(this));
-    parent.addEventListener('keydown', this._captureTab.bind(this), { bubble: false });
-    document.body.addEventListener('keydown', this._triggerActions.bind(this));
+    this._toggle.addEventListener("click", this._toggleMenu.bind(this));
+    parent.addEventListener("keydown", this._captureTab.bind(this), {
+      bubble: false
+    });
+    document.body.addEventListener("keydown", this._triggerActions.bind(this));
 
     // Get all buttons and set up button actions
-    this._buttons = [...this._menu.querySelectorAll('.actions--action')];
+    this._buttons = [...this._menu.querySelectorAll(".actions--action")];
 
     this.editor = editor;
 
     for (const button of this._buttons) {
       const id = button.id;
-      button.addEventListener('click', this[id].bind(this));
+      button.addEventListener("click", this[id].bind(this));
     }
   }
 
@@ -47,11 +49,11 @@ export class Menu extends Actions {
    * Toggles relevant ARIA attributes to hide/show the actions menu
    */
   _toggleMenu() {
-    if (this._menu.ariaHidden === 'true') {
+    if (this._menu.ariaHidden === "true") {
       // Show the menu if it's currently hidden
       this._menu.ariaHidden = false;
       this._toggle.ariaExpanded = true;
-      this._toggle.ariaLabel = 'Close actions';
+      this._toggle.ariaLabel = "Close actions";
       for (const button of this._buttons) {
         button.tabIndex = 0;
       }
@@ -59,7 +61,7 @@ export class Menu extends Actions {
       // Hide the menu if it's currently shown
       this._menu.ariaHidden = true;
       this._toggle.ariaExpanded = false;
-      this._toggle.ariaLabel = 'Open actions';
+      this._toggle.ariaLabel = "Open actions";
       for (const button of this._buttons) {
         button.tabIndex = 1;
       }
@@ -71,9 +73,9 @@ export class Menu extends Actions {
    * @param {DOMEvent} e - Event
    */
   _captureTab(e) {
-    if (this._menu.ariaHidden !== 'true') {
-      const tab = e.key === 'Tab';
-      const esc = e.key === 'Escape';
+    if (this._menu.ariaHidden !== "true") {
+      const tab = e.key === "Tab";
+      const esc = e.key === "Escape";
       const shift = e.shiftKey;
       const target = e.target;
 
@@ -98,7 +100,7 @@ export class Menu extends Actions {
     if (e.metaKey) {
       switch (e.code) {
         // Save/Save As
-        case 'KeyS':
+        case "KeyS":
           e.preventDefault();
           // Meta + Shift + S
           // Save As
@@ -111,13 +113,13 @@ export class Menu extends Actions {
           }
           break;
         // Open
-        case 'KeyO':
+        case "KeyO":
           e.preventDefault();
           // Meta + O
           this.open();
           break;
         // Focus
-        case 'KeyF':
+        case "KeyF":
           if (e.shiftKey) {
             e.preventDefault();
             // Meta + Shift + F
@@ -125,7 +127,7 @@ export class Menu extends Actions {
           }
           break;
         // Preview
-        case 'KeyP':
+        case "KeyP":
           if (e.shiftKey) {
             e.preventDefault();
             // Meta + Shift + P
@@ -133,7 +135,7 @@ export class Menu extends Actions {
           }
           break;
         // Preview
-        case 'KeyR':
+        case "KeyR":
           if (e.shiftKey) {
             e.preventDefault();
             // Meta + Shift + R

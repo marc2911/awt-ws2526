@@ -8,21 +8,21 @@ const userSchema = new Schema(
       type: String,
       minlength: 2,
       required: true,
-      unique: true,
+      unique: true
     },
     passwordHash: {
       type: String,
-      required: true,
+      required: true
     },
     permissions: {
       type: [String],
       enum: Permissions,
-      default: [],
-    },
+      default: []
+    }
   },
   {
-    pluginTags: ["mongoose-beautiful-unique-validation"],
-  },
+    pluginTags: ["mongoose-beautiful-unique-validation"]
+  }
 );
 
 export const User = model("User", userSchema);

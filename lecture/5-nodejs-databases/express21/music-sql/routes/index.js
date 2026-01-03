@@ -6,7 +6,7 @@ let connection = sql.createConnection({
   host: "localhost",
   user: "root",
   password: "demopw",
-  database: "music",
+  database: "music"
 });
 
 connection.connect(err => {

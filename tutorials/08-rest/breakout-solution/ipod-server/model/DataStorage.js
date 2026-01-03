@@ -7,35 +7,35 @@ class DataStorage {
       id: 1,
       name: "My Cool Playlist",
       songs: [
-        1440817260, 1350457768, 1211829300, 1132801552, 487215156, 1440489651,
-      ],
-    },
+        1440817260, 1350457768, 1211829300, 1132801552, 487215156, 1440489651
+      ]
+    }
   };
   songs = {
     1440817260: {
       artist: "John Lennon",
-      title: "Instant Karma",
+      title: "Instant Karma"
     },
     1350457768: {
       artist: "Caamp",
-      title: "26",
+      title: "26"
     },
     1211829300: {
       artist: "Dispatch",
-      title: "Be Gone",
+      title: "Be Gone"
     },
     1132801552: {
       artist: "Ledinsky",
-      title: "DonaldTrumpMakesMeWannaSmokeSomeCrack",
+      title: "DonaldTrumpMakesMeWannaSmokeSomeCrack"
     },
     487215156: {
       artist: "3OH!3",
-      title: "Set You Free",
+      title: "Set You Free"
     },
     1440489651: {
       artist: "Creedence Clearwater Revival",
-      title: "Lodi",
-    },
+      title: "Lodi"
+    }
   };
 
   // returns ids of all playlists
@@ -48,7 +48,7 @@ class DataStorage {
     let playlist = this.playlists[id];
     return {
       id: playlist.id,
-      name: playlist.name,
+      name: playlist.name
     };
   }
 
@@ -64,7 +64,7 @@ class DataStorage {
     return {
       id: id,
       artist: song.artist,
-      title: song.title,
+      title: song.title
     };
   }
 
@@ -82,9 +82,9 @@ class DataStorage {
         json.json().then(res => {
           this.songs[trackId] = {
             artist: res.results[0].artistName,
-            title: res.results[0].trackName,
+            title: res.results[0].trackName
           };
-        }),
+        })
       );
 
       return true;

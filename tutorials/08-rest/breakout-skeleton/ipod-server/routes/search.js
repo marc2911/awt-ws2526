@@ -20,7 +20,7 @@ router.get("/", async (req, res, next) => {
   const songs = songsResponse.map(songsJson => ({
     id: songsJson.trackId,
     artist: songsJson.artistName,
-    title: songsJson.trackName,
+    title: songsJson.trackName
   }));
 
   dataStore.addNewSongs(songs);

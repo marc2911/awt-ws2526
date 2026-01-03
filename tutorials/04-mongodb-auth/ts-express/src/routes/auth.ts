@@ -25,7 +25,7 @@ router.post(
   "/register",
   [
     body("username").isString().notEmpty().withMessage("Username is required"),
-    body("password").isString().notEmpty().withMessage("Password is required"),
+    body("password").isString().notEmpty().withMessage("Password is required")
   ],
   async (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
@@ -41,7 +41,7 @@ router.post(
     const newUser = new User({
       username: username,
       passwordHash: passwordHash,
-      permissions: ["admin"],
+      permissions: ["admin"]
     });
 
     try {
@@ -54,8 +54,8 @@ router.post(
         return res.status(400).json({
           error: {
             message: "User already exists with these values",
-            values: affectedKeys,
-          },
+            values: affectedKeys
+          }
         });
       }
 
@@ -63,14 +63,14 @@ router.post(
     }
 
     res.status(201).send();
-  },
+  }
 );
 
 router.get(
   "/login",
   [
     query("username").isString().notEmpty().withMessage("Username is required"),
-    query("password").isString().notEmpty().withMessage("Password is required"),
+    query("password").isString().notEmpty().withMessage("Password is required")
   ],
   async (req: Request, res: Response) => {
     const errors = validationResult(req);
@@ -104,7 +104,7 @@ router.get(
     const claims: Claims = { permission: perm, username };
     const token = jwt.sign(claims, env.SECRET_KEY);
     res.send(token);
-  },
+  }
 );
 
 export default router;

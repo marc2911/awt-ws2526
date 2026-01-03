@@ -25,7 +25,7 @@ if ("serviceWorker" in navigator) {
       if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
         //import.meta.env?.DEV) {
         reg = await navigator.serviceWorker.register("/myserviceworker.js", {
-          type: "module",
+          type: "module"
         });
       } else {
         // In production, use the normal service worker registration

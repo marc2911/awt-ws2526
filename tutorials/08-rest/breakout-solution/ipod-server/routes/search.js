@@ -12,11 +12,11 @@ router.get("/", function (req, res, next) {
         resultArray.push({
           artist: result.artistName,
           title: result.trackName,
-          id: result.trackId,
+          id: result.trackId
         });
       });
       res.send(resultArray);
-    }),
+    })
   );
 });
 

@@ -29,14 +29,14 @@ var precacheResources = [
   "/favicon.ico",
   "/logo192.png",
   "/index.html",
-  "/manifest.json",
+  "/manifest.json"
 ];
 
 // When the service worker is installing, open the cache and add the precache resources to it
 self.addEventListener("install", event => {
   console.log("Service worker install event!");
   event.waitUntil(
-    caches.open(cacheName).then(cache => cache.addAll(precacheResources)),
+    caches.open(cacheName).then(cache => cache.addAll(precacheResources))
   );
 });
 
@@ -53,6 +53,6 @@ self.addEventListener("fetch", event => {
         return cachedResponse;
       }
       return fetch(event.request);
-    }),
+    })
   );
 });

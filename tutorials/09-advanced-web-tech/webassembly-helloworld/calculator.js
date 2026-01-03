@@ -51,7 +51,7 @@ var ENVIRONMENT_IS_SHELL =
 
 if (Module["ENVIRONMENT"]) {
   throw new Error(
-    "Module.ENVIRONMENT has been deprecated. To force the environment, use the ENVIRONMENT compile-time option (for example, -sENVIRONMENT=web or -sENVIRONMENT=node)",
+    "Module.ENVIRONMENT has been deprecated. To force the environment, use the ENVIRONMENT compile-time option (for example, -sENVIRONMENT=web or -sENVIRONMENT=node)"
   );
 }
 
@@ -90,7 +90,7 @@ if (ENVIRONMENT_IS_NODE) {
     process.release.name !== "node"
   )
     throw new Error(
-      "not compiled for this environment (did you build to HTML and try to run it not on the web, or set ENVIRONMENT to something - like node - and run it someplace else - like on the web?)",
+      "not compiled for this environment (did you build to HTML and try to run it not on the web, or set ENVIRONMENT to something - like node - and run it someplace else - like on the web?)"
     );
   // `require()` is no-op in an ESM module, use `createRequire()` to construct
   // the require()` function.  This is only necessary for multi-environment
@@ -184,7 +184,7 @@ if (ENVIRONMENT_IS_NODE) {
     typeof importScripts == "function"
   )
     throw new Error(
-      "not compiled for this environment (did you build to HTML and try to run it not on the web, or set ENVIRONMENT to something - like node - and run it someplace else - like on the web?)",
+      "not compiled for this environment (did you build to HTML and try to run it not on the web, or set ENVIRONMENT to something - like node - and run it someplace else - like on the web?)"
     );
 
   if (typeof read != "undefined") {
@@ -251,7 +251,7 @@ if (ENVIRONMENT_IS_NODE) {
   if (scriptDirectory.indexOf("blob:") !== 0) {
     scriptDirectory = scriptDirectory.substr(
       0,
-      scriptDirectory.replace(/[?#].*/, "").lastIndexOf("/") + 1,
+      scriptDirectory.replace(/[?#].*/, "").lastIndexOf("/") + 1
     );
   } else {
     scriptDirectory = "";
@@ -259,7 +259,7 @@ if (ENVIRONMENT_IS_NODE) {
 
   if (!(typeof window == "object" || typeof importScripts == "function"))
     throw new Error(
-      "not compiled for this environment (did you build to HTML and try to run it not on the web, or set ENVIRONMENT to something - like node - and run it someplace else - like on the web?)",
+      "not compiled for this environment (did you build to HTML and try to run it not on the web, or set ENVIRONMENT to something - like node - and run it someplace else - like on the web?)"
     );
 
   // Differentiate the Web Worker from the Node Worker case, as reading must
@@ -336,39 +336,39 @@ legacyModuleProp("quit", "quit_");
 // Assertions on removed incoming Module JS APIs.
 assert(
   typeof Module["memoryInitializerPrefixURL"] == "undefined",
-  "Module.memoryInitializerPrefixURL option was removed, use Module.locateFile instead",
+  "Module.memoryInitializerPrefixURL option was removed, use Module.locateFile instead"
 );
 assert(
   typeof Module["pthreadMainPrefixURL"] == "undefined",
-  "Module.pthreadMainPrefixURL option was removed, use Module.locateFile instead",
+  "Module.pthreadMainPrefixURL option was removed, use Module.locateFile instead"
 );
 assert(
   typeof Module["cdInitializerPrefixURL"] == "undefined",
-  "Module.cdInitializerPrefixURL option was removed, use Module.locateFile instead",
+  "Module.cdInitializerPrefixURL option was removed, use Module.locateFile instead"
 );
 assert(
   typeof Module["filePackagePrefixURL"] == "undefined",
-  "Module.filePackagePrefixURL option was removed, use Module.locateFile instead",
+  "Module.filePackagePrefixURL option was removed, use Module.locateFile instead"
 );
 assert(
   typeof Module["read"] == "undefined",
-  "Module.read option was removed (modify read_ in JS)",
+  "Module.read option was removed (modify read_ in JS)"
 );
 assert(
   typeof Module["readAsync"] == "undefined",
-  "Module.readAsync option was removed (modify readAsync in JS)",
+  "Module.readAsync option was removed (modify readAsync in JS)"
 );
 assert(
   typeof Module["readBinary"] == "undefined",
-  "Module.readBinary option was removed (modify readBinary in JS)",
+  "Module.readBinary option was removed (modify readBinary in JS)"
 );
 assert(
   typeof Module["setWindowTitle"] == "undefined",
-  "Module.setWindowTitle option was removed (modify setWindowTitle in JS)",
+  "Module.setWindowTitle option was removed (modify setWindowTitle in JS)"
 );
 assert(
   typeof Module["TOTAL_MEMORY"] == "undefined",
-  "Module.TOTAL_MEMORY has been renamed Module.INITIAL_MEMORY",
+  "Module.TOTAL_MEMORY has been renamed Module.INITIAL_MEMORY"
 );
 legacyModuleProp("read", "read_");
 legacyModuleProp("readAsync", "readAsync");
@@ -383,7 +383,7 @@ var NODEFS = "NODEFS is no longer included by default; build with -lnodefs.js";
 
 assert(
   !ENVIRONMENT_IS_SHELL,
-  "shell environment detected but not enabled at build time.  Add 'shell' to `-sENVIRONMENT` to enable.",
+  "shell environment detected but not enabled at build time.  Add 'shell' to `-sENVIRONMENT` to enable."
 );
 
 // include: support.js
@@ -418,7 +418,7 @@ function getNativeTypeSize(type) {
         const bits = Number(type.substr(1));
         assert(
           bits % 8 === 0,
-          "getNativeTypeSize invalid bits " + bits + ", type " + type,
+          "getNativeTypeSize invalid bits " + bits + ", type " + type
         );
         return bits / 8;
       }
@@ -439,9 +439,9 @@ function legacyModuleProp(prop, newName) {
             prop +
             " has been replaced with plain " +
             newName +
-            " (the initial value can be provided on Module, but after startup the value is only looked for on a local variable of that name)",
+            " (the initial value can be provided on Module, but after startup the value is only looked for on a local variable of that name)"
         );
-      },
+      }
     });
   }
 }
@@ -453,7 +453,7 @@ function ignoredModuleProp(prop) {
         prop +
         "` was supplied but `" +
         prop +
-        "` not included in INCOMING_MODULE_JS_API",
+        "` not included in INCOMING_MODULE_JS_API"
     );
   }
 }
@@ -479,7 +479,7 @@ function missingGlobal(sym, msg) {
     get: function () {
       warnOnce("`" + sym + "` is not longer defined by emscripten. " + msg);
       return undefined;
-    },
+    }
   });
 }
 
@@ -514,7 +514,7 @@ function missingLibrarySymbol(sym) {
         }
         warnOnce(msg);
         return undefined;
-      },
+      }
     });
   }
 }
@@ -533,7 +533,7 @@ function unexportedRuntimeSymbol(sym) {
             ". Alternatively, forcing filesystem support (-sFORCE_FILESYSTEM) can export this for you";
         }
         abort(msg);
-      },
+      }
     });
   }
 }
@@ -589,13 +589,13 @@ function assert(condition, text) {
 // builds with assertions.
 function _malloc() {
   abort(
-    "malloc() called but not included in the build - add '_malloc' to EXPORTED_FUNCTIONS",
+    "malloc() called but not included in the build - add '_malloc' to EXPORTED_FUNCTIONS"
   );
 }
 function _free() {
   // Show a helpful error since we used to include free by default in the past.
   abort(
-    "free() called but not included in the build - add '_free' to EXPORTED_FUNCTIONS",
+    "free() called but not included in the build - add '_free' to EXPORTED_FUNCTIONS"
   );
 }
 
@@ -655,7 +655,7 @@ function UTF8ArrayToString(heapOrArray, idx, maxBytesToRead) {
         warnOnce(
           "Invalid UTF-8 leading byte " +
             ptrToString(u0) +
-            " encountered when deserializing a UTF-8 string in wasm memory to a JS string!",
+            " encountered when deserializing a UTF-8 string in wasm memory to a JS string!"
         );
       u0 =
         ((u0 & 7) << 18) | (u1 << 12) | (u2 << 6) | (heapOrArray[idx++] & 63);
@@ -750,7 +750,7 @@ function stringToUTF8Array(str, heap, outIdx, maxBytesToWrite) {
         warnOnce(
           "Invalid Unicode code point " +
             ptrToString(u) +
-            " encountered when serializing a JS string to a UTF-8 string in wasm memory! (Valid unicode code points should be in range 0-0x10FFFF).",
+            " encountered when serializing a JS string to a UTF-8 string in wasm memory! (Valid unicode code points should be in range 0-0x10FFFF)."
         );
       heap[outIdx++] = 0xf0 | (u >> 18);
       heap[outIdx++] = 0x80 | ((u >> 12) & 63);
@@ -775,7 +775,7 @@ function stringToUTF8Array(str, heap, outIdx, maxBytesToWrite) {
 function stringToUTF8(str, outPtr, maxBytesToWrite) {
   assert(
     typeof maxBytesToWrite == "number",
-    "stringToUTF8(str, outPtr, maxBytesToWrite) is missing the third parameter that specifies the length of the output buffer!",
+    "stringToUTF8(str, outPtr, maxBytesToWrite) is missing the third parameter that specifies the length of the output buffer!"
   );
   return stringToUTF8Array(str, HEAPU8, outPtr, maxBytesToWrite);
 }
@@ -846,7 +846,7 @@ var STACK_SIZE = 65536;
 if (Module["STACK_SIZE"])
   assert(
     STACK_SIZE === Module["STACK_SIZE"],
-    "the stack size can no longer be determined at runtime",
+    "the stack size can no longer be determined at runtime"
   );
 
 var INITIAL_MEMORY = Module["INITIAL_MEMORY"] || 16777216;
@@ -858,7 +858,7 @@ assert(
     INITIAL_MEMORY +
     "! (STACK_SIZE=" +
     STACK_SIZE +
-    ")",
+    ")"
 );
 
 // check for full engine support (use string 'subarray' to avoid closure compiler confusion)
@@ -867,17 +867,17 @@ assert(
     typeof Float64Array !== "undefined" &&
     Int32Array.prototype.subarray != undefined &&
     Int32Array.prototype.set != undefined,
-  "JS engine does not provide full typed array support",
+  "JS engine does not provide full typed array support"
 );
 
 // If memory is defined in wasm, the user can't provide it.
 assert(
   !Module["wasmMemory"],
-  "Use of `wasmMemory` detected.  Use -sIMPORTED_MEMORY to define wasmMemory externally",
+  "Use of `wasmMemory` detected.  Use -sIMPORTED_MEMORY to define wasmMemory externally"
 );
 assert(
   INITIAL_MEMORY == 16777216,
-  "Detected runtime INITIAL_MEMORY setting.  Use -sIMPORTED_MEMORY to define wasmMemory dynamically",
+  "Detected runtime INITIAL_MEMORY setting.  Use -sIMPORTED_MEMORY to define wasmMemory dynamically"
 );
 
 // include: runtime_init_table.js
@@ -924,13 +924,13 @@ function checkStackCookie() {
         ", expected hex dwords 0x89BACDFE and 0x2135467, but received " +
         ptrToString(cookie2) +
         " " +
-        ptrToString(cookie1),
+        ptrToString(cookie1)
     );
   }
   // Also test the global address 0 for integrity.
   if (HEAPU32[0] !== 0x63736d65 /* 'emsc' */) {
     abort(
-      "Runtime error: The application has corrupted its heap memory area (address zero)!",
+      "Runtime error: The application has corrupted its heap memory area (address zero)!"
     );
   }
 }
@@ -1020,19 +1020,19 @@ function addOnPostRun(cb) {
 
 assert(
   Math.imul,
-  "This browser does not support Math.imul(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill",
+  "This browser does not support Math.imul(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill"
 );
 assert(
   Math.fround,
-  "This browser does not support Math.fround(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill",
+  "This browser does not support Math.fround(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill"
 );
 assert(
   Math.clz32,
-  "This browser does not support Math.clz32(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill",
+  "This browser does not support Math.clz32(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill"
 );
 assert(
   Math.trunc,
-  "This browser does not support Math.trunc(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill",
+  "This browser does not support Math.trunc(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill"
 );
 
 // end include: runtime_math.js
@@ -1163,7 +1163,7 @@ function abort(what) {
 var FS = {
   error: function () {
     abort(
-      "Filesystem support (FS) was not included. The problem is that you are using files from JS, but files were not used from C/C++, so filesystem support was not auto-included. You can force-include filesystem support with -sFORCE_FILESYSTEM",
+      "Filesystem support (FS) was not included. The problem is that you are using files from JS, but files were not used from C/C++, so filesystem support was not auto-included. You can force-include filesystem support with -sFORCE_FILESYSTEM"
     );
   },
   init: function () {
@@ -1196,7 +1196,7 @@ var FS = {
 
   ErrnoError: function ErrnoError() {
     FS.error();
-  },
+  }
 };
 Module["FS_createDataFile"] = FS.createDataFile;
 Module["FS_createPreloadedFile"] = FS.createPreloadedFile;
@@ -1230,12 +1230,12 @@ function createExportWrapper(name, fixedasm) {
       runtimeInitialized,
       "native function `" +
         displayName +
-        "` called before runtime initialization",
+        "` called before runtime initialization"
     );
     if (!asm[name]) {
       assert(
         asm[name],
-        "exported native function `" + displayName + "` not found",
+        "exported native function `" + displayName + "` not found"
       );
     }
     return asm[name].apply(null, arguments);
@@ -1289,7 +1289,7 @@ function getBinaryPromise() {
             function (response) {
               resolve(new Uint8Array(/** @type{!ArrayBuffer} */ (response)));
             },
-            reject,
+            reject
           );
         });
       }
@@ -1308,7 +1308,7 @@ function createWasm() {
   // prepare imports
   var info = {
     env: asmLibraryArg,
-    wasi_snapshot_preview1: asmLibraryArg,
+    wasi_snapshot_preview1: asmLibraryArg
   };
   // Load the wasm module and create an instance of using native support in the JS engine.
   // handle a generated wasm instance, receiving its exports and
@@ -1347,7 +1347,7 @@ function createWasm() {
     // receiveInstance() will swap in the exports (to Module.asm) so they can be called
     assert(
       Module === trueModule,
-      "the Module object should not be replaced during async compilation - perhaps the order of HTML elements is wrong?",
+      "the Module object should not be replaced during async compilation - perhaps the order of HTML elements is wrong?"
     );
     trueModule = null;
     // TODO: Due to Closure regression https://github.com/google/closure-compiler/issues/3193, the above line no longer optimizes out down to the following line.
@@ -1371,7 +1371,7 @@ function createWasm() {
           err(
             "warning: Loading from a file URI (" +
               wasmBinaryFile +
-              ") is not supported in most browsers. See https://emscripten.org/docs/getting_started/FAQ.html#how-do-i-run-a-local-webserver-for-testing-why-does-my-program-stall-in-downloading-or-preparing",
+              ") is not supported in most browsers. See https://emscripten.org/docs/getting_started/FAQ.html#how-do-i-run-a-local-webserver-for-testing-why-does-my-program-stall-in-downloading-or-preparing"
           );
         }
         abort(reason);
@@ -1410,7 +1410,7 @@ function createWasm() {
             err("falling back to ArrayBuffer instantiation");
             return instantiateArrayBuffer(receiveInstantiationResult);
           });
-        },
+        }
       );
     } else {
       return instantiateArrayBuffer(receiveInstantiationResult);
@@ -1512,7 +1512,7 @@ function setValue(ptr, value, type = "i8") {
       HEAP32[ptr >> 2] = value;
       break;
     case "i64":
-      ((tempI64 = [
+      (tempI64 = [
         value >>> 0,
         ((tempDouble = value),
         +Math.abs(tempDouble) >= 1.0
@@ -1521,12 +1521,12 @@ function setValue(ptr, value, type = "i8") {
                 0) >>>
               0
             : ~~+Math.ceil(
-                (tempDouble - +(~~tempDouble >>> 0)) / 4294967296.0,
+                (tempDouble - +(~~tempDouble >>> 0)) / 4294967296.0
               ) >>> 0
-          : 0),
+          : 0)
       ]),
         (HEAP32[ptr >> 2] = tempI64[0]),
-        (HEAP32[(ptr + 4) >> 2] = tempI64[1]));
+        (HEAP32[(ptr + 4) >> 2] = tempI64[1]);
       break;
     case "float":
       HEAPF32[ptr >> 2] = value;
@@ -1866,7 +1866,7 @@ var unexportedRuntimeSymbols = [
   "runAndAbortIfError",
   "ALLOC_NORMAL",
   "ALLOC_STACK",
-  "allocate",
+  "allocate"
 ];
 unexportedRuntimeSymbols.forEach(unexportedRuntimeSymbol);
 var missingLibrarySymbols = [
@@ -2030,7 +2030,7 @@ var missingLibrarySymbols = [
   "runAndAbortIfError",
   "ALLOC_NORMAL",
   "ALLOC_STACK",
-  "allocate",
+  "allocate"
 ];
 missingLibrarySymbols.forEach(missingLibrarySymbol);
 
@@ -2083,7 +2083,7 @@ function run(args) {
 
     assert(
       !Module["_main"],
-      'compiled without a main, but one is present. if you added it from JS, use Module["onRuntimeInitialized"]',
+      'compiled without a main, but one is present. if you added it from JS, use Module["onRuntimeInitialized"]'
     );
 
     postRun();
@@ -2129,10 +2129,10 @@ function checkUnflushedContent() {
   err = oldErr;
   if (has) {
     warnOnce(
-      "stdio streams had content in them that was not flushed. you should set EXIT_RUNTIME to 1 (see the FAQ), or make sure to emit a newline when you printf etc.",
+      "stdio streams had content in them that was not flushed. you should set EXIT_RUNTIME to 1 (see the FAQ), or make sure to emit a newline when you printf etc."
     );
     warnOnce(
-      "(this may also be due to not including full filesystem support - try building with -sFORCE_FILESYSTEM)",
+      "(this may also be due to not including full filesystem support - try building with -sFORCE_FILESYSTEM)"
     );
   }
 }

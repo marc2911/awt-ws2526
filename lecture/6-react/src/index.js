@@ -102,5 +102,5 @@ class Songs extends React.Component {
 
 ReactDOM.render(
   <Songs songlist={sampleSongs} />,
-  document.getElementById("root"),
+  document.getElementById("root")
 );

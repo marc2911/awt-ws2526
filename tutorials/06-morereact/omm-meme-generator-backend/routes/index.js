@@ -14,13 +14,13 @@ const IMAGES = {
   buzz: "buzz.jpg",
   bernie: "bernie.jpg",
   confessionbear: "Confession-Bear.jpg",
-  wonka: "wonka.jpg",
+  wonka: "wonka.jpg"
 };
 
 // Routes
 router.get("/memes", (req, res) => {
   res.json(
-    Object.keys(IMAGES).map(key => ({ name: key, link: `/memes/${key}` })),
+    Object.keys(IMAGES).map(key => ({ name: key, link: `/memes/${key}` }))
   );
 });
 
@@ -35,7 +35,7 @@ router.get("/memes/:key", async (req, res, next) => {
   const imagePath = path.join(IMAGE_BASE_PATH, imageName);
   const imageOutPath = path.join(
     IMAGE_BASE_PATH,
-    `${path.basename(imageName)}_out${path.extname(imageName)}`,
+    `${path.basename(imageName)}_out${path.extname(imageName)}`
   );
 
   const img = await Jimp.read(imagePath);
@@ -44,7 +44,7 @@ router.get("/memes/:key", async (req, res, next) => {
   const image = {
     data: img.scale(2),
     width: img.getWidth(),
-    height: img.getHeight(),
+    height: img.getHeight()
   };
 
   const upperCaption = {
@@ -52,7 +52,7 @@ router.get("/memes/:key", async (req, res, next) => {
     x:
       (image.width - Jimp.measureText(font, text || "")) / 2 +
       (parseInt(x) || 0),
-    y: 50 + (parseInt(y) || 0),
+    y: 50 + (parseInt(y) || 0)
   };
   const lowerCaption = {
     text: text2 || "",
@@ -63,7 +63,7 @@ router.get("/memes/:key", async (req, res, next) => {
       image.height -
       Jimp.measureTextHeight(font, text2 || "") -
       50 +
-      (parseInt(y2) || 0),
+      (parseInt(y2) || 0)
   };
 
   const imageWithText = image.data

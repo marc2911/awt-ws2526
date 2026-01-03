@@ -6,7 +6,7 @@ const data = { text: "Hello!" };
 
 fetch(url, {
   method: "POST",
-  body: data,
+  body: data
 })
   .then(res => res.json())
   .then(handleResults);

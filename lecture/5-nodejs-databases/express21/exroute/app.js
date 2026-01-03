@@ -3,7 +3,7 @@ const app = express();
 
 app.use((request, response, next) => {
   console.log(
-    "Request received with query    " + JSON.stringify(request.query),
+    "Request received with query    " + JSON.stringify(request.query)
   );
   next();
 });
