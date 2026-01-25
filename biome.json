@@ -20,7 +20,7 @@
     "rules": {
       "recommended": false,
       "performance": {
-        "noImgElement": "warn",
+        "noImgElement": "off",
         "noUnwantedPolyfillio": "warn",
         "useGoogleFontPreconnect": "warn"
       },
