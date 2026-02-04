@@ -20,9 +20,14 @@ router.get("/", function (req, res, next) {
 router.post("/search", async (req, res) => {
   let username = req.body.username;
 
-  let sqlQuery = "select * from users where name='" + username + "';";
-  console.log(sqlQuery);
-  const [results, metadata] = await sequelize.query(sqlQuery);
+  const safeQuery = await sequelize.query("select * from users where name=?", [
+    username
+  ]);
+  console.log("SAFE: ", safeQuery);
+
+  let unsafeQuery = "select * from users where name='" + username + "';";
+  console.log("UNSAFE: ", unsafeQuery);
+  const [results, metadata] = await sequelize.query(unsafeQuery);
 
   res.json(results);
 });
